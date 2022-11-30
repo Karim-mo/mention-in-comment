@@ -1,0 +1,57 @@
+{
+	"name": "mention-in-comment",
+	"displayName": "Mention In Comment",
+	"description": "Mention your peers at github in your code comments!",
+	"version": "0.0.1",
+	"publisher": "Karim Mohamed",
+	"repository": "https://github.com/karim-mo/mention-in-comment",
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"*"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"title": "Toggle Mention Highlight",
+				"category": "Mention In Comment",
+				"command": "mentionincomment.toggleMentionHighlight"
+			}
+		],
+		"configuration": {
+			"title": "Mention In Comment",
+			"properties": {
+				"mentionInComment.isEnabled": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enable or disable the mention highlight"
+				},
+				"mentionInComment.mentionColor": {
+					"type": "string",
+					"default": "#ffffff",
+					"description": "The color of the mention highlight"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run build",
+		"build": "tsc && tsc-alias -p tsconfig.json",
+		"lint": "eslint \"src/**/*.ts\""
+	},
+	"devDependencies": {
+		"@types/node": "^16.11.7",
+		"@types/vscode": "^1.34.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"concurrently": "^7.6.0",
+		"eslint": "^8.26.0",
+		"tsc-alias": "^1.7.1",
+		"typescript": "^4.3.5"
+	}
+}
