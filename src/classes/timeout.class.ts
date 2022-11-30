@@ -1,10 +1,10 @@
 export class Timeout {
-	public static timeout: NodeJS.Timeout | undefined;
+	private static timeout: NodeJS.Timeout | undefined;
 
 	// constructor(private callback: () => void, private delay: number) {}
 
 	public static trigger(callback: () => void, delay: number) {
-		this.timeout && clearTimeout(this.timeout);
+		this.clear();
 		this.timeout = setTimeout(callback, delay);
 	}
 

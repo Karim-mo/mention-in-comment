@@ -1,3 +1,4 @@
+import { Decorations } from '@classes/decorations.class';
 import * as vscode from 'vscode';
 
 export function updateDecorations() {
@@ -37,21 +38,14 @@ export function updateDecorations() {
 		while ((match = regex.exec(document.getText()))) {
 			const startPos = document.positionAt(match.index);
 			const endPos = document.positionAt(match.index + match[0].length);
+
 			const decoration: vscode.DecorationOptions = {
 				range: new vscode.Range(startPos, endPos),
 			};
+
 			decorations.push(decoration);
 		}
 	});
 
-	const mentionColor = vscode.workspace.getConfiguration('mentionInComment').get('mentionColor');
-
-	editor.setDecorations(
-		vscode.window.createTextEditorDecorationType({
-			backgroundColor: mentionColor,
-			isWholeLine: false,
-			rangeBehavior: vscode.DecorationRangeBehavior.ClosedClosed,
-		}),
-		decorations
-	);
+	editor.setDecorations(Decorations.mentionDecorationType, decorations);
 }
