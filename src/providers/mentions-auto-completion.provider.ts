@@ -1,3 +1,4 @@
+import { ISendToMentionArguments } from '@interfaces/send-to-mention-arguments.interface';
 import * as vscode from 'vscode';
 
 export const autoCompleteMentionsInCommentProvider = vscode.languages.registerCompletionItemProvider(
@@ -20,9 +21,14 @@ export const autoCompleteMentionsInCommentProvider = vscode.languages.registerCo
 				let item = new vscode.CompletionItem(text, vscode.CompletionItemKind.Text);
 				item.range = new vscode.Range(position, position);
 				item.command = {
-					command: 'extension.sendEmailToMentionedUser',
+					command: 'mentionincomment.sendEmailToMention',
 					title: '',
-					arguments: [text],
+					arguments: [
+						{
+							mention: text,
+							fromCommand: true,
+						},
+					] as ISendToMentionArguments[],
 				};
 
 				return item;

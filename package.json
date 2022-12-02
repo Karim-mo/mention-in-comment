@@ -39,6 +39,9 @@
 			}
 		}
 	},
+	"extensionDependencies": [
+		"vscode.git"
+	],
 	"scripts": {
 		"vscode:prepublish": "npm run build",
 		"build": "tsc && tsc-alias -p tsconfig.json",

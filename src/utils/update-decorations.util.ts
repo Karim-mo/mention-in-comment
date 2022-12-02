@@ -10,6 +10,7 @@ export function updateDecorations() {
 
 	const document = editor.document;
 
+	//TODO: Fix the way mentions are highlighted because, it could duplicate a highlight that isn't inside a comment..
 	// Get all single line comments in current file
 	const singleLineComments = document.getText().match(/\/\/.*$/gm);
 	if (!singleLineComments) {
